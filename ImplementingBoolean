@@ -1,35 +1,34 @@
-package com.javarush.task.task13.task1302;
+package com.javarush.task.task13.task1303;
 
 /* 
-Пиво-2. Возвращение
+Пиво с колой не мешать
 */
 
 public class Solution {
     public static void main(String[] args) throws Exception {
-        Drink beer = new AlcoholicBeer();
-        System.out.println(beer.toString());
+        print(new Beer());
+        print(new Cola());
+    }
+
+    private static void print(Drink drink) {
+        System.out.println(drink.getClass().getSimpleName());
     }
 
     public interface Drink {
         boolean isAlcoholic();
     }
 
-    public static class AlcoholicBeer implements Drink{
-
+    public static class Beer implements Drink{
         @Override
         public boolean isAlcoholic() {
             return true;
         }
+    }
+
+    public static class Cola implements Drink{
         @Override
-        public String toString() {
-            if (isAlcoholic()) {
-                return "Напиток алкогольный";
-            } else {
-                return "Напиток безалкогольный";
-            }
-
+        public boolean isAlcoholic() {
+            return false;
         }
-
-
     }
 }
